@@ -43,6 +43,8 @@ With docker run: try [decomposerize](https://www.decomposerize.com/)
 
 ## Configuration
 
+Please make sure the container has access to the database container. Refer to the [Docker networking documentation](https://docs.docker.com/compose/networking/) for more information.
+
 ### Environment Variables
 
 - `MYSQL_CONTAINER_NAME`: Name of your MediaWiki database container. It is actually the hostname of the database container with help of docker. IP address can be used as well.
