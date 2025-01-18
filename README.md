@@ -8,6 +8,7 @@ A Docker-based utility for automated backups of MediaWiki installations, includi
 - Database backup using mysqldump
 - Image directory backup
 - Compressed backup files
+- Sleep random time before backup to avoid backup at the same time
 - Docker-based solution
 
 ## Prerequisites

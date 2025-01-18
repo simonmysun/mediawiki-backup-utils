@@ -5,6 +5,13 @@ NOW=$(date +"%FT%H%M%z")
 
 echo $NOW
 
+MIN_WAIT=0
+MAX_WAIT=30
+SLEEP_TIME=$((MIN_WAIT + RANDOM % (MAX_WAIT - MIN_WAIT)))
+echo sleep $SLEEP_TIME seconds
+sleep $SLEEP_TIME
+echo slept $SLEEP_TIME seconds
+
 MHOST=$MYSQL_CONTAINER_NAME
 MPASS=$MYSQL_ROOT_PASSWORD
 MUSER=root
