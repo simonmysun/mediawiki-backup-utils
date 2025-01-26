@@ -21,8 +21,8 @@ LATEST_SQL=$(ls -t ${DAILY_BACKUP}/mariadb-*.sql.gz | head -n1)
 LATEST_IMAGES=$(ls -t ${DAILY_BACKUP}/wiki_images-*.gz | head -n1)
 
 # Copy to monthly folder with new timestamp
-cp "$LATEST_SQL" "${BACKUP_FOLDER}/mariadb-${NOW}.sql.gz"
-cp "$LATEST_IMAGES" "${BACKUP_FOLDER}/wiki_images-${NOW}.gz"
+cp "$LATEST_SQL" "${BACKUP_FOLDER}/"
+cp "$LATEST_IMAGES" "${BACKUP_FOLDER}/"
 
 # keep ~3 months
 find $BACKUP_FOLDER -maxdepth 1 -mtime +30 -type f -delete
