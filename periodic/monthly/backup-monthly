@@ -4,25 +4,25 @@ BACKUP_FOLDER=/backup/monthly
 DAILY_BACKUP=/backup/daily
 NOW=$(date +"%FT%H%M%z")
 
-echo $NOW
+echo "${NOW}"
 
 # wait for daily backup to finish (hopefully)
 MIN_WAIT=60
 MAX_WAIT=120
 SLEEP_TIME=$((MIN_WAIT + RANDOM % (MAX_WAIT - MIN_WAIT)))
-echo sleep $SLEEP_TIME seconds
-sleep $SLEEP_TIME
-echo slept $SLEEP_TIME seconds
+echo "sleep ${SLEEP_TIME} seconds"
+sleep "${SLEEP_TIME}"
+echo "slept ${SLEEP_TIME} seconds"
 
-[ ! -d "$BACKUP_FOLDER" ] && mkdir --parents $BACKUP_FOLDER
+[ ! -d "${BACKUP_FOLDER}" ] && mkdir --parents "${BACKUP_FOLDER}"
 
 # Find most recent daily backups
-LATEST_SQL=$(ls -t ${DAILY_BACKUP}/mariadb-*.sql.gz | head -n1)
-LATEST_IMAGES=$(ls -t ${DAILY_BACKUP}/wiki_images-*.gz | head -n1)
+LATEST_SQL="$(ls -t "${DAILY_BACKUP}/mariadb-*.sql.gz" | head -n1)"
+LATEST_IMAGES="$(ls -t "${DAILY_BACKUP}/wiki_images-*.gz" | head -n1)"
 
 # Copy to monthly folder with new timestamp
-cp "$LATEST_SQL" "${BACKUP_FOLDER}/"
-cp "$LATEST_IMAGES" "${BACKUP_FOLDER}/"
+cp "${LATEST_SQL}" "${BACKUP_FOLDER}/"
+cp "${LATEST_IMAGES}" "${BACKUP_FOLDER}/"
 
 # keep ~3 months
-find $BACKUP_FOLDER -maxdepth 1 -mtime +100 -type f -delete
+find "${BACKUP_FOLDER}" -maxdepth 1 -mtime +100 -type f -delete
