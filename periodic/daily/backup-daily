@@ -24,7 +24,7 @@ FILE_SQL="${BACKUP_FOLDER}/mariadb-${NOW}.sql.gz"
 FILE_IMAGES="${BACKUP_FOLDER}/wiki_images-${NOW}.gz"
 
 mariadb-dump -h "${MHOST}" -u "${MUSER}" -p"${MPASS}" --all-databases --skip_ssl | gzip -9 > "${FILE_SQL}"
-tar -zcvf "${FILE_IMAGES}" --exclude /var/www/html/images/thumb/ /var/www/
+tar -zcvf "${FILE_IMAGES}" /var/www/ --exclude='var/www/html/images/thumb'
 
 # keep 3 days
 find $BACKUP_FOLDER -maxdepth 1 -mtime +3 -type f -delete
