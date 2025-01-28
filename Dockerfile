@@ -8,5 +8,6 @@ RUN apk update && \
 COPY ./periodic/daily/backup-daily /etc/periodic/daily/backup-daily
 COPY ./periodic/weekly/backup-weekly /etc/periodic/weekly/backup-weekly
 COPY ./periodic/monthly/backup-monthly /etc/periodic/monthly/backup-monthly
+COPY ./entrypoint.sh /entrypoint.sh
 
-CMD ["crond", "-f", "-d", "8"]
+CMD ["sh", "/entrypoint.sh"]
