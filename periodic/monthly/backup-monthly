@@ -17,8 +17,8 @@ echo "slept ${SLEEP_TIME} seconds"
 [ ! -d "${BACKUP_FOLDER}" ] && mkdir --parents "${BACKUP_FOLDER}"
 
 # Find most recent daily backups
-LATEST_SQL="$(ls -t "${DAILY_BACKUP}/mariadb-*.sql.gz" | head -n1)"
-LATEST_IMAGES="$(ls -t "${DAILY_BACKUP}/wiki_images-*.gz" | head -n1)"
+LATEST_SQL="$(ls -t "${DAILY_BACKUP}/mariadb-*.sql.tar.gz" | head -n1)"
+LATEST_IMAGES="$(ls -t "${DAILY_BACKUP}/wiki_images-*.tar.gz" | head -n1)"
 
 # Copy to monthly folder with new timestamp
 cp "${LATEST_SQL}" "${BACKUP_FOLDER}/"

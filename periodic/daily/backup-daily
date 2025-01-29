@@ -20,8 +20,8 @@ echo "connecting to ${MHOST} as ${MUSER}"
 
 [ ! -d "${BACKUP_FOLDER}" ] && mkdir --parents "${BACKUP_FOLDER}"
 
-FILE_SQL="${BACKUP_FOLDER}/mariadb-${NOW}.sql.gz"
-FILE_IMAGES="${BACKUP_FOLDER}/wiki_images-${NOW}.gz"
+FILE_SQL="${BACKUP_FOLDER}/mariadb-${NOW}.sql.tar.gz"
+FILE_IMAGES="${BACKUP_FOLDER}/wiki_images-${NOW}.tar.gz"
 
 mariadb-dump -h "${MHOST}" -u "${MUSER}" -p"${MPASS}" --all-databases --skip_ssl | gzip -9 > "${FILE_SQL}"
 tar -zcvf "${FILE_IMAGES}" /var/www/ --exclude='var/www/html/images/thumb'
